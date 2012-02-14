@@ -1,0 +1,2 @@
+deb http://dotdeb.debian.skynet.be/ stable all
+deb-src http://dotdeb.debian.skynet.be/ stable all

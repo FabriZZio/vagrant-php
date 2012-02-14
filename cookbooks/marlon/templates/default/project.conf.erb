@@ -1,0 +1,5 @@
+<VirtualHost *:80>
+    DocumentRoot <%= @node[:vagrant][:directory] %>
+
+    php_flag apc.cache_by_default Off 
+</VirtualHost>

@@ -1,0 +1,26 @@
+{
+  "name": "lamp",
+  "chef_type": "role",
+  "json_class": "Chef::Role",
+  "description": "LAMP stack setup",
+  "run_list": [
+    "recipe[apt]",
+    "recipe[marlon::apt-sources]",
+    "recipe[openssl]",
+    "recipe[mysql::server]",
+    "recipe[apache2]",
+    "recipe[php]",
+    "recipe[apache2::mod_php5]",
+    "recipe[apache2::mod_rewrite]",
+    "recipe[apache2::mod_headers]",
+    "recipe[apache2::mod_expires]",
+    "recipe[marlon]"
+  ],
+  "default_attributes": {
+  },
+  "override_attributes": {
+    "mysql": {
+      "server_root_password": "root"
+    }
+  }
+}

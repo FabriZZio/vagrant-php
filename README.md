@@ -11,4 +11,4 @@ Non-default PHP extensions:
 
 - oci8 (installed with Oracle instantclient)
 
-This is work in progress and should in not be used in production.
+This is work in progress and should not be used in production.

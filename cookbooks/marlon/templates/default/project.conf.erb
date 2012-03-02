@@ -1,5 +1,9 @@
 <VirtualHost *:80>
-    DocumentRoot <%= @node[:vagrant][:directory] %>
 
-    php_flag apc.cache_by_default Off 
+	ServerName <%= @params[:server_name] %>
+  	ServerAlias <% @params[:server_aliases].each do |a| %><%= "#{a}" %> <% end %>
+  	DocumentRoot <%= @params[:docroot] %>
+  	SetEnv "APPLICATION_ENV" "<%= @params[:set_env] %>"
+
+    # php_flag apc.cache_by_default Off
 </VirtualHost>

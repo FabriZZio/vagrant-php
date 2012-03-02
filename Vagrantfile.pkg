@@ -1,0 +1,15 @@
+# -*- mode: ruby -*-
+# vi: set ft=ruby :
+
+Vagrant::Config.run do |config|
+
+  config.vm.provision :chef_solo do |chef|
+      chef.cookbooks_path = "cookbooks"
+      chef.roles_path = "roles"
+      chef.add_role "lamp"   
+  end
+
+  # apache port forwarding
+  config.vm.forward_port 80, 8080
+
+end

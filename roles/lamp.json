@@ -5,11 +5,14 @@
   "description": "LAMP stack setup",
   "run_list": [
     "recipe[apt]",
-    "recipe[marlon::apt-sources]",
+    /*"recipe[marlon::apt-sources]",*/
     "recipe[openssl]",
     "recipe[mysql::server]",
     "recipe[apache2]",
+    "recipe[build-essential]",
+    "recipe[xml]",
     "recipe[php]",
+    "recipe[php::module_apc]",
     "recipe[apache2::mod_php5]",
     "recipe[apache2::mod_rewrite]",
     "recipe[apache2::mod_headers]",
@@ -21,6 +24,14 @@
   "override_attributes": {
     "mysql": {
       "server_root_password": "root"
-    }
+    },
+    "php": {
+        //"install_method": "source",
+        //"version": "5.3.10",
+        //"checksum": "816259e5ca7d0a7e943e56a3bb32b17f"
+    },
+    "hostname": "project.local",
+    "aliases": "project-alias.local",
+    "set_env": "local"
   }
 }

@@ -102,5 +102,7 @@ Vagrant::Config.run do |config|
 
   # apache port forwarding
   config.vm.forward_port 80, 8080
+  
+  # config.vm.share_folder("my-folder", "/folder", "/path/to/real/folder")
 
 end

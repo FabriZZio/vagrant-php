@@ -21,14 +21,6 @@ template "/etc/php5/conf.d/xdebug.ini" do
   notifies :restart, resources("service[apache2]"), :delayed
 end
 
-# apc requirement
-#package "libpcre3-dev"
-
-#php_pear "apc" do
-#  action :install
-#  notifies :restart, resources("service[apache2]"), :delayed
-#end
-
 # php5 mysql
 package "php5-mysql" do
   action :install
@@ -51,7 +43,15 @@ web_app "project" do
 end
 
 # install PHPUnit
-package "phpunit"
+# package "phpunit"
+
+execute "pear-discover" do
+  command "sudo pear config-set auto_discover 1"
+end
+
+execute "phpunit" do
+  command "sudo pear install pear.phpunit.de/PHPUnit"
+end
 
 # todo:
 # apache /pma alias: "project.local/pma"

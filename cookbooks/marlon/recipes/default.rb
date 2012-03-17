@@ -53,54 +53,5 @@ end
 # install PHPUnit
 package "phpunit"
 
-# install unzip
-package "unzip"
-
-# oracle instantclient
-script "install_instantclient" do
-  interpreter "bash"
-  user "root"
-  cwd "/tmp"
-  code <<-EOH
-  rm -rf /tmp/instantclient*
-  wget --load-cookies=/vagrant/oracle-cookie.txt http://download.oracle.com/otn/linux/instantclient/11203/instantclient-basic-linux-11.2.0.3.0.zip
-  unzip instantclient-basic-linux-11.2.0.3.0.zip
-  
-  wget --load-cookies=/vagrant/oracle-cookie.txt http://download.oracle.com/otn/linux/instantclient/11203/instantclient-sqlplus-linux-11.2.0.3.0.zip
-  unzip instantclient-sqlplus-linux-11.2.0.3.0.zip
-  
-  wget --load-cookies=/vagrant/oracle-cookie.txt http://download.oracle.com/otn/linux/instantclient/11203/instantclient-sdk-linux-11.2.0.3.0.zip
-  unzip instantclient-sdk-linux-11.2.0.3.0.zip
-  
-  mkdir -p /usr/local/instantclient
-  rm -rf /usr/local/instantclient/*
-  cp -R instantclient_11_2/* /usr/local/instantclient/
-  cd /usr/local/instantclient
-  ln -s libclntsh.so.11.1 libclntsh.so
-  ln -s libocci.so.11.1 libocci.so
-  
-  echo 'export ORACLE_HOME=/usr/local/instantclient' >> /etc/profile
-  echo 'export DYLD_LIBRARY_PATH=/usr/local/instantclient' >> /etc/profile
-  
-  EOH
-  not_if "test -f /usr/local/instantclient"
-end
-
-# libaio requirement oci8
-package "libaio1"
-
-# php oci8
-script "oci8" do
-  interpreter "bash"
-  user "root"
-  cwd "/tmp"
-  code <<-EOH
-  echo 'instantclient,/usr/local/instantclient' | sudo pecl install oci8
-  echo '
-  extension=oci8.so' >> /etc/php5/conf.d/custom.ini
-  EOH
-end
-
 # todo:
 # apache /pma alias: "project.local/pma"
-# install php from dotdeb

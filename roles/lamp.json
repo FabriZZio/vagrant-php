@@ -5,7 +5,7 @@
   "description": "LAMP stack setup",
   "run_list": [
     "recipe[apt]",
-    /*"recipe[marlon::apt-sources]",*/
+    "recipe[marlon::apt-sources]",
     "recipe[openssl]",
     "recipe[mysql::server]",
     "recipe[apache2]",

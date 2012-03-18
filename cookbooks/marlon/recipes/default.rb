@@ -43,8 +43,6 @@ web_app "project" do
 end
 
 # install PHPUnit
-# package "phpunit"
-
 execute "pear-discover" do
   command "sudo pear config-set auto_discover 1"
 end
@@ -52,6 +50,9 @@ end
 execute "phpunit" do
   command "sudo pear install pear.phpunit.de/PHPUnit"
 end
+
+# install ant (for deployment)
+package "ant"
 
 # todo:
 # apache /pma alias: "project.local/pma"

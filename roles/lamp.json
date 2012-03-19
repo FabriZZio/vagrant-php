@@ -25,11 +25,6 @@
     "mysql": {
       "server_root_password": "root"
     },
-    "php": {
-        //"install_method": "source",
-        //"version": "5.3.10",
-        //"checksum": "816259e5ca7d0a7e943e56a3bb32b17f"
-    },
     "hostname": "project.local",
     "aliases": "project-alias.local",
     "set_env": "local"

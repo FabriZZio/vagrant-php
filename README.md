@@ -22,7 +22,6 @@ Additional packages:
 - XDebug
 - Apache Ant
 
-
 How to use
 ----------
 

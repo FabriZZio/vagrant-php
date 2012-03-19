@@ -1,6 +1,6 @@
 Vagrant PHP
 ===========
-This is a Vagrant(http://www.vagrantup.com) box setup with a LAMP stack for developing PHP applications.
+This is a Vagrant (http://www.vagrantup.com) box setup with a LAMP stack for developing PHP applications.
 
 Requirements:
 
@@ -38,7 +38,7 @@ vagrant init
 
 vagrant up
 
-4) your current project folder is configured as the default Apache vhost, and accessible through http://localhost:8080
+4) your current project folder is configured as the default Apache vhost, and accessible through http://localhost:8080 (port 80 has been mapped to port 8080)
 
 Remarks
 -------
@@ -53,5 +53,5 @@ Your project code is safe since it is accessed using Oracle VirtualBox shared fo
 Warning
 -------
 
-The purpose of this setup is creating an easy-to-use development box for our team at Marlon(http://www.marlon.be/).
+The purpose of this setup is creating an easy-to-use development box for our team at Marlon (http://www.marlon.be/).
 It is in no way meant to be used in a production environment.

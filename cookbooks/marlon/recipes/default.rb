@@ -64,14 +64,14 @@ script "install_instantclient" do
   cwd "/tmp"
   code <<-EOH
   rm -rf /tmp/instantclient*
-  wget --load-cookies=/vagrant/oracle-cookie.txt http://download.oracle.com/otn/linux/instantclient/11203/instantclient-basic-linux-11.2.0.3.0.zip
-  unzip instantclient-basic-linux-11.2.0.3.0.zip
+  wget --load-cookies=/vagrant/oracle-cookie.txt http://download.oracle.com/otn/linux/instantclient/11203/instantclient-basic-linux.x64-11.2.0.3.0.zip
+  unzip instantclient-basic-linux.x64-11.2.0.3.0.zip
   
-  wget --load-cookies=/vagrant/oracle-cookie.txt http://download.oracle.com/otn/linux/instantclient/11203/instantclient-sqlplus-linux-11.2.0.3.0.zip
-  unzip instantclient-sqlplus-linux-11.2.0.3.0.zip
+  wget --load-cookies=/vagrant/oracle-cookie.txt http://download.oracle.com/otn/linux/instantclient/11203/instantclient-sqlplus-linux.x64-11.2.0.3.0.zip
+  unzip instantclient-sqlplus-linux.x64-11.2.0.3.0.zip
   
-  wget --load-cookies=/vagrant/oracle-cookie.txt http://download.oracle.com/otn/linux/instantclient/11203/instantclient-sdk-linux-11.2.0.3.0.zip
-  unzip instantclient-sdk-linux-11.2.0.3.0.zip
+  wget --load-cookies=/vagrant/oracle-cookie.txt http://download.oracle.com/otn/linux/instantclient/11203/instantclient-sdk-linux.x64-11.2.0.3.0.zip
+  unzip instantclient-sdk-linux.x64-11.2.0.3.0.zip
   
   mkdir -p /usr/local/instantclient
   rm -rf /usr/local/instantclient/*

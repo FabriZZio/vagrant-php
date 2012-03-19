@@ -27,7 +27,7 @@ How to use
 
 1) add the packaged box generated from this source code to vagrant
 
-vagrant box add base http://files.vagrantup.com/lucid32.box
+vagrant box add base http://dl.dropbox.com/u/68032224/lamp.box
 
 2) in your project folder, initialize vagrant
 

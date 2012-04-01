@@ -42,6 +42,11 @@ web_app "project" do
   set_env node['set_env']
 end
 
+# upgrade PEAR to latest version
+execute "upgrade-pear" do
+  command "sudo pear upgrade pear"
+end
+
 # install PHPUnit
 execute "pear-discover" do
   command "sudo pear config-set auto_discover 1"

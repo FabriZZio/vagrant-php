@@ -7,8 +7,8 @@ Vagrant::Config.run do |config|
   # please see the online documentation at vagrantup.com.
 
   # Every Vagrant virtual environment requires a box to build off of.
-  # http://vagrantbox.es/170/
-  config.vm.box = "ubuntu-1110-server-amd64"
+  # http://files.vagrantup.com/lucid32.box
+  config.vm.box = "lucid32"
 
   # Assign this VM to a host-only network IP, allowing you to access it
   # via the IP. Host-only networks can talk to the host machine as well as

@@ -27,6 +27,14 @@ package "php5-mysql" do
   notifies :restart, resources("service[apache2]"), :delayed
 end
 
+# memcached
+package "memcached"
+
+# memcache
+php_pear "memcache" do
+  action :install
+end
+
 # disable default apache site
 execute "disable-default-site" do
   command "sudo a2dissite default"
@@ -38,7 +46,7 @@ web_app "project" do
   template "project.conf.erb"
   server_name node['hostname']
   server_aliases node['aliases']
-  docroot "/vagrant"
+  docroot "/vagrant/public"
   set_env node['set_env']
 end
 
@@ -47,12 +55,59 @@ execute "pear-discover" do
   command "sudo pear config-set auto_discover 1"
 end
 
-execute "phpunit" do
-  command "sudo pear install pear.phpunit.de/PHPUnit"
+# upgrade pear
+execute "pear-upgrade" do
+  command "sudo pear upgrade pear"
 end
 
-# install ant (for deployment)
-package "ant"
+execute "phpunit" do
+  command "sudo pear install pear.phpunit.de/PHPUnit"
+  not_if "phpunit -v | grep 3.6"
+end
 
-# todo:
-# apache /pma alias: "project.local/pma"
+
+# install git
+package "git-core"
+
+# phpMyAdmin
+script "install_phpmyadmin" do
+  interpreter "bash"
+  user "root"
+  cwd "/tmp"
+  code <<-EOH
+  rm -rf /tmp/phpMyAdmin*
+
+  wget http://sourceforge.net/projects/phpmyadmin/files/phpMyAdmin/3.5.0/phpMyAdmin-3.5.0-english.tar.gz
+  tar -xzvf phpMyAdmin-3.5.0-english.tar.gz
+
+  mkdir -p /var/www/phpmyadmin
+  cp -R /tmp/phpMyAdmin-3.5.0-english/* /var/www/phpmyadmin/
+
+  EOH
+  not_if "test -f /var/www/phpmyadmin"
+end
+
+# capistrano
+script "install_capistrano" do
+  interpreter "bash"
+  user "root"
+  cwd "/tmp"
+  code <<-EOH
+  gem sources -a http://gems.github.com/
+  gem install capistrano
+  gem install capistrano-ext
+
+  git clone git@github.com:marlon-be/fratello-deploy-strategy.git
+  cd fratello-deploy-strategy
+  gem build fratello.gemspec
+  gem install fratello-0.0.2.gem
+
+  cd ..
+  git clone https://github.com/ursm/capistrano-notification.git
+  cd capistrano-notification
+  gem build capistrano-notification.gemspec
+  gem install capistrano-notification-0.1.1.gem
+  gem install sr-shout-bot --source=http://gems.github.com
+
+  EOH
+end

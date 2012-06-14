@@ -5,4 +5,6 @@
   	DocumentRoot <%= @params[:docroot] %>
   	SetEnv "APPLICATION_ENV" "<%= @params[:set_env] %>"
 
+    Alias /phpmyadmin /var/www/phpmyadmin
+
 </VirtualHost>

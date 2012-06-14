@@ -17,27 +17,46 @@
 # limitations under the License.
 #
 
-::Chef::Resource::Package.send(:include, Opscode::Mysql::Helpers)
+# Include Opscode helper in Recipe class to get access
+# to debian_before_squeeze? and ubuntu_before_lucid?
+::Chef::Recipe.send(:include, Opscode::Mysql::Helpers)
 
-package "mysql-client" do
-  package_name value_for_platform(
-    [ "centos", "redhat", "suse", "fedora", "scientific", "amazon"] => { "default" => "mysql" },
-    "default" => "mysql-client"
-  )
-  action :install
+mysql_packages = case node['platform']
+when "centos", "redhat", "suse", "fedora", "scientific", "amazon"
+  %w{mysql mysql-devel}
+when "ubuntu","debian"
+  if debian_before_squeeze? || ubuntu_before_lucid?
+    %w{mysql-client libmysqlclient15-dev}
+  else
+    %w{mysql-client libmysqlclient-dev}
+  end
+when "freebsd"
+  %w{mysql55-client}
+when "windows"
+  package_file = node['mysql']['client']['package_file']
+  remote_file "#{Chef::Config[:file_cache_path]}/#{package_file}" do
+    source node['mysql']['client']['url']
+    not_if { File.exists? "#{Chef::Config[:file_cache_path]}/#{package_file}" }
+  end
+
+  windows_package node['mysql']['client']['package_name'] do
+    source "#{Chef::Config[:file_cache_path]}/#{package_file}"
+  end
+  windows_path node['mysql']['client']['bin_dir'] do
+    action :add
+  end
+  def package(*args, &blk)
+    windows_package(*args, &blk)
+  end
+  [node['mysql']['client']['package_name']]
+else
+  %w{mysql-client libmysqlclient-dev}
 end
 
-package "mysql-devel" do
-  package_name begin
-    if platform?(%w{ centos redhat suse fedora scientific amazon })
-      "mysql-devel"
-    elsif debian_before_squeeze? || ubuntu_before_lucid?
-      "libmysqlclient15-dev"
-    else
-      "libmysqlclient-dev"
-    end
+mysql_packages.each do |mysql_pack|
+  package mysql_pack do
+    action :install
   end
-  action :install
 end
 
 if platform?(%w{ redhat centos fedora suse scientific amazon })
@@ -47,5 +66,15 @@ elsif platform?(%w{ debian ubuntu })
 else
   gem_package "mysql" do
     action :install
+  end
+end
+
+if platform? 'windows'
+  ruby_block "copy libmysql.dll into ruby path" do
+    block do
+      require 'fileutils'
+      FileUtils.cp "#{node['mysql']['client']['lib_dir']}\\libmysql.dll", node['mysql']['client']['ruby_dir']
+    end
+    not_if { File.exist?("#{node['mysql']['client']['ruby_dir']}\\libmysql.dll") }
   end
 end

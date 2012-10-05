@@ -1,0 +1,2 @@
+# phpmyadmin
+package "phpmyadmin"

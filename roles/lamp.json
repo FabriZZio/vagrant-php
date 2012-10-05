@@ -12,7 +12,8 @@
         "recipe[main::sqlite3]",
         "recipe[main::mysql]",
         "recipe[main::php]",
-        "recipe[main::apache]"
+        "recipe[main::apache]",
+        "recipe[main::phpmyadmin]"
     ],
     "default_attributes": {
         "php": {

@@ -3,7 +3,9 @@
   ServerAlias <% @params[:server_aliases].each do |a| %><%= "#{a}" %> <% end %>
   DocumentRoot <%= @params[:docroot] %>
   RewriteEngine On
-  
+
+  Alias /phpmyadmin /usr/share/phpmyadmin
+
   <Directory <%= @params[:docroot] %>>
     Options FollowSymLinks
     AllowOverride None

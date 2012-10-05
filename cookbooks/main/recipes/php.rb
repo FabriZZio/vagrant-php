@@ -7,10 +7,11 @@ php_pear "xdebug" do
 end
 
 # apc
-php_pear "apc" do
-  action :install
-  directives(:shm_size => "128M", :enable_cli => 1)
-end
+#php_pear "apc" do
+#  action :install
+#  directives(:shm_size => "128M", :enable_cli => 1)
+#end
+package "php5-apc"
 
 # curl
 package "php5-curl"

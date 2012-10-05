@@ -77,7 +77,12 @@ Vagrant::Config.run do |config|
     chef.add_role "lamp"
   #
   #   # You may also specify custom JSON attributes:
-  #   chef.json = { :mysql_password => "foo" }
+  chef.json = {
+    'apache2' => {
+      'user' => 'vagrant',
+      'group' => 'vagrant'
+    }
+  }
   end
 
   # Enable provisioning with chef server, specifying the chef server URL,

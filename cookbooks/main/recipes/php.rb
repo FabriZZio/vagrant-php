@@ -31,3 +31,6 @@ package "php5-sqlite"
 
 # mysql
 package "php5-mysql"
+
+# php fpm
+package "php5-fpm"

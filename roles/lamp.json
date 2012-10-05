@@ -11,7 +11,8 @@
         "recipe[main::memcached]",
         "recipe[main::sqlite3]",
         "recipe[main::mysql]",
-        "recipe[main::php]"
+        "recipe[main::php]",
+        "recipe[main::apache]"
     ],
     "default_attributes": {
         "php": {

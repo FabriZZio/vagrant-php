@@ -16,3 +16,6 @@
 [submodule "cookbooks/mysql_charset"]
 	path = cookbooks/mysql_charset
 	url = git://github.com/geoffreytran/chef-mysql_charset.git
+[submodule "cookbooks/apache2"]
+	path = cookbooks/apache2
+	url = git://github.com/opscode-cookbooks/apache2.git

@@ -7,11 +7,15 @@ php_pear "xdebug" do
 end
 
 # apc
-#php_pear "apc" do
-#  action :install
-#  directives(:shm_size => "128M", :enable_cli => 1)
-#end
 package "php5-apc"
+
+# apc shm size
+template "#{node['php']['ext_conf_dir']}/apc.ini" do
+  source "apc.ini.erb"
+  owner "root"
+  group "root"
+  mode "0644"
+end
 
 # curl
 package "php5-curl"
@@ -23,6 +27,7 @@ package "php5-gd"
 package "php5-memcache"
 
 # sqlite
-php_pear "sqlite" do
-  action :install
-end
+package "php5-sqlite"
+
+# mysql
+package "php5-mysql"

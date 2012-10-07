@@ -35,3 +35,19 @@ package "php5-mysql"
 
 # php fpm
 package "php5-fpm"
+
+# pear phpunit channel
+php_pear_channel "pear.phpunit.de" do
+  action :discover
+end
+
+# pear auto-discover
+execute "pear-auto-discover" do
+    command "pear config-set auto_discover 1"
+end
+
+# phpunit
+php_pear "PHPUnit" do
+    channel "pear.phpunit.de"
+    action :install
+end

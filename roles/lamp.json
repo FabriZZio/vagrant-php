@@ -7,6 +7,7 @@
         "recipe[apt]",
         "recipe[build-essential]",
         "recipe[main]",
+        "recipe[main::capistrano]",
         "recipe[main::curl]",
         "recipe[main::memcached]",
         "recipe[main::sqlite3]",

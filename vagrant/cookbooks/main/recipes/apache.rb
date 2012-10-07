@@ -24,8 +24,20 @@ execute "disable-default-site" do
   notifies :reload, resources(:service => "apache2"), :delayed
 end
 
+# default vhost containing FastCGIExternalServer declaration (can only be used once in all vhosts)
 web_app "default" do
   server_name node['hostname']
-  server_aliases [node['fqdn'], "my-site.example.com"]
-  docroot "/vagrant"
+  server_aliases []
+  docroot "/vagrant/docs"
+  template "web_app_fastcgi.conf.erb"
+end
+
+# load vhost entries from Vagrantfile
+node['applications'].each do |a|
+  web_app "#{a['name']}" do
+    server_name "#{a['domain']}"
+    server_aliases []
+    docroot "#{a['docroot']}"
+    application_env "#{a['application_env']}"
+  end
 end

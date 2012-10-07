@@ -7,6 +7,8 @@
   Alias /phpmyadmin /usr/share/phpmyadmin
   Alias /webgrind /usr/share/webgrind
 
+  SetEnv APPLICATION_ENV "@params[:application_env]"
+
   <Directory <%= @params[:docroot] %>>
     Options FollowSymLinks
     AllowOverride None
@@ -30,7 +32,7 @@
   # Associate an alias mapping for the 'fake' fcgi call.
   Alias /php5.fcgi /var/www/php5.fcgi
   # Assign the 'fake' fcgi to call to an 'external' FastCGI Server
-  FastCGIExternalServer /var/www/php5.fcgi -flush -host 127.0.0.1:9000
+  # FastCGIExternalServer /var/www/php5.fcgi -flush -host 127.0.0.1:9000
 
   # Create the handler mappings to associate PHP files with a call to '/php$
   AddType application/x-httpd-fastphp5 .php

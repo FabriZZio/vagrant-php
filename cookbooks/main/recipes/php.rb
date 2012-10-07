@@ -3,6 +3,7 @@ include_recipe "php"
 # xdebug
 php_pear "xdebug" do
   zend_extensions ['xdebug.so']
+  directives(:profiler_enable_trigger => 1)
   action :install
 end
 

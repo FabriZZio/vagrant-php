@@ -33,6 +33,7 @@
   Alias /php5.fcgi /var/www/php5.fcgi
   # Assign the 'fake' fcgi to call to an 'external' FastCGI Server
   # FastCGIExternalServer /var/www/php5.fcgi -flush -host 127.0.0.1:9000
+  # commented this out because only one FastCGIExternalServer can exist over the different vhosts
 
   # Create the handler mappings to associate PHP files with a call to '/php$
   AddType application/x-httpd-fastphp5 .php

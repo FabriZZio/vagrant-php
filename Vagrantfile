@@ -47,8 +47,8 @@ Vagrant::Config.run do |config|
   # some recipes and/or roles.
   #
   config.vm.provision :chef_solo do |chef|
-    chef.cookbooks_path = "vagrant/cookbooks"
-    chef.roles_path = "vagrant/roles"
+    chef.cookbooks_path = "cookbooks"
+    chef.roles_path = "roles"
     chef.add_role "lamp"
 
   # You may also specify custom JSON attributes:

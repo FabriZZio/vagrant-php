@@ -1,3 +1,4 @@
 {
-    "name": "fabrizzio/vagrant-php"
+    "name": "fabrizzio/vagrant-php",
+    "bin": ["bin/install"]
 }

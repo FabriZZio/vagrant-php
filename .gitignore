@@ -1,4 +1,2 @@
 .idea
 .vagrant
-cookbooks/*
-!cookbooks/main/

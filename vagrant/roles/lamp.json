@@ -27,10 +27,6 @@
         "mysql_charset": {
             "encoding": "utf8",
             "collation": "utf8_general_ci"
-        },
-        "apache": {
-            "user": "vagrant",
-            "group": "vagrant"
         }
     },
     "override_attributes": {

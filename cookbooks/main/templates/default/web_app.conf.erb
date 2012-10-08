@@ -7,7 +7,7 @@
   Alias /phpmyadmin /usr/share/phpmyadmin
   Alias /webgrind /usr/share/webgrind
 
-  SetEnv APPLICATION_ENV "@params[:application_env]"
+  SetEnv APPLICATION_ENV "<%= @params[:application_env] %>"
 
   <Directory <%= @params[:docroot] %>>
     Options FollowSymLinks

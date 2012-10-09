@@ -36,6 +36,14 @@ package "php5-mysql"
 # php fpm
 package "php5-fpm"
 
+# php-fpm PHP settings
+template "#{node['php']['ext_conf_dir']}/php-fpm.ini" do
+  source "php-fpm.ini.erb"
+  owner "root"
+  group "root"
+  mode "0644"
+end
+
 # pear phpunit channel
 php_pear_channel "pear.phpunit.de" do
   action :discover

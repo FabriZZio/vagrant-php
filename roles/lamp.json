@@ -9,6 +9,7 @@
         "recipe[main]",
         "recipe[main::capistrano]",
         "recipe[main::curl]",
+        "recipe[main::gearman]",
         "recipe[main::memcached]",
         "recipe[main::sqlite3]",
         "recipe[main::mysql]",

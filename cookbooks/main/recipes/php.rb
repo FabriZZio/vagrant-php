@@ -67,3 +67,13 @@ php_pear "PHPUnit" do
     channel "pear.phpunit.de"
     action :install
 end
+
+# update the main pecl channel
+php_pear_channel 'pecl.php.net' do
+  action :update
+end
+
+# gearman
+php_pear "gearman" do
+    action :install
+end

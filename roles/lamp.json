@@ -15,7 +15,8 @@
         "recipe[main::php]",
         "recipe[main::apache]",
         "recipe[main::phpmyadmin]",
-        "recipe[main::webgrind]"
+        "recipe[main::webgrind]",
+        "recipe[main::supervisord]"
     ],
     "default_attributes": {
         "php": {

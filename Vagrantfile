@@ -57,6 +57,9 @@ Vagrant::Config.run do |config|
       'user' => 'vagrant',
       'group' => 'vagrant'
     },
+    'php' => {
+      'pool_dir' => '/etc/php5/fpm/pool.d'
+    },
     'applications' => [
     {
       'name' => 'fratello',

@@ -9,19 +9,22 @@
         "recipe[main]",
         "recipe[main::capistrano]",
         "recipe[main::curl]",
+        "recipe[main::gearman]",
         "recipe[main::memcached]",
         "recipe[main::sqlite3]",
         "recipe[main::mysql]",
         "recipe[main::php]",
         "recipe[main::apache]",
         "recipe[main::phpmyadmin]",
-        "recipe[main::webgrind]"
+        "recipe[main::webgrind]",
+        "recipe[main::supervisord]"
     ],
     "default_attributes": {
         "php": {
             "directives": {
                 "date.timezone": "Europe/Brussels",
-                "post_max_size": "32M"
+                "post_max_size": "32M",
+                "short_open_tag": "On"
             }
         },
         "mysql_charset": {

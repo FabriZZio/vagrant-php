@@ -11,7 +11,7 @@
 
   <Directory <%= @params[:docroot] %>>
     Options FollowSymLinks
-    AllowOverride None
+    AllowOverride All
     Order allow,deny
     Allow from all
   </Directory>
@@ -28,16 +28,6 @@
     Deny from all
     Allow from 127.0.0.1
   </Location>
-
-  # Associate an alias mapping for the 'fake' fcgi call.
-  Alias /php5.fcgi /var/www/php5.fcgi
-  # Assign the 'fake' fcgi to call to an 'external' FastCGI Server
-  # FastCGIExternalServer /var/www/php5.fcgi -flush -host 127.0.0.1:9000
-  # commented this out because only one FastCGIExternalServer can exist over the different vhosts
-
-  # Create the handler mappings to associate PHP files with a call to '/php$
-  AddType application/x-httpd-fastphp5 .php
-  Action application/x-httpd-fastphp5 /php5.fcgi
 
   LogLevel info
   ErrorLog <%= node['apache']['log_dir'] %>/<%= @params[:name] %>-error.log

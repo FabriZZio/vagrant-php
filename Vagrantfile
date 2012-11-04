@@ -54,10 +54,6 @@ Vagrant::Config.run do |config|
 
   # You may also specify custom JSON attributes:
   chef.json = {
-    'apache2' => {
-      'user' => 'vagrant',
-      'group' => 'vagrant'
-    },
     'php' => {
       'pool_dir' => '/etc/php5/fpm/pool.d'
     },

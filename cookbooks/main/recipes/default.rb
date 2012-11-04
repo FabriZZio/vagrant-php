@@ -1,6 +1,3 @@
-# install git
-package "git-core"
-
 # dotdeb repository
 apt_repository "dotdeb" do
   uri "http://packages.dotdeb.org"

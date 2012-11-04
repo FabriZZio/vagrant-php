@@ -6,6 +6,8 @@
     "run_list": [
         "recipe[apt]",
         "recipe[build-essential]",
+        "recipe[main::git]",
+        "recipe[main::sendmail]",
         "recipe[main]",
         "recipe[main::capistrano]",
         "recipe[main::curl]",

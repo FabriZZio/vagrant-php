@@ -1,5 +1,6 @@
 <IfModule mod_fastcgi.c>
-  AddHandler fastcgi-script .fcgi
-  #FastCgiWrapper /usr/lib/apache2/suexec
-  FastCgiIpcDir /var/lib/apache2/fastcgi
+    AddHandler php5-fcgi .php
+    Action php5-fcgi /php5-fcgi
+    Alias /php5-fcgi /usr/lib/cgi-bin/php5-fcgi
+    FastCgiExternalServer /usr/lib/cgi-bin/php5-fcgi -socket /tmp/php-fpm.sock -pass-header Authorization
 </IfModule>

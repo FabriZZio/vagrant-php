@@ -29,6 +29,10 @@
     Allow from 127.0.0.1
   </Location>
 
+  # Create the handler mappings to associate PHP files with a call to '/php$
+  AddType application/x-httpd-fastphp5 .php
+  Action application/x-httpd-fastphp5 /php5.fcgi
+
   LogLevel info
   ErrorLog <%= node['apache']['log_dir'] %>/<%= @params[:name] %>-error.log
   CustomLog <%= node['apache']['log_dir'] %>/<%= @params[:name] %>-access.log combined

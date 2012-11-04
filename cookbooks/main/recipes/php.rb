@@ -17,8 +17,6 @@ end
 
 # apc
 package "php5-apc"
-
-# apc shm size
 template "#{node['php']['ext_conf_dir']}/apc.ini" do
   source "apc.ini.erb"
   owner "root"
@@ -42,16 +40,9 @@ package "php5-sqlite"
 package "php5-mysql"
 
 # php fpm
-#package "php5-fpm"
+package "php5-fpm"
 
-# php-fpm PHP settings
-#template "#{node['php']['ext_conf_dir']}/php-fpm.ini" do
-#  source "php-fpm.ini.erb"
-#  owner "root"
-#  group "root"
-#  mode "0644"
-#end
-
+# define php5-fpm service
 service "php5-fpm" do
   service_name "php5-fpm"
   restart_command "/etc/init.d/php5-fpm restart && sleep 1"
@@ -89,7 +80,23 @@ php_pear_channel 'pecl.php.net' do
   action :update
 end
 
-# gearman
-php_pear "gearman" do
-    action :install
+# gearman (manual install php_pear fails)
+execute "pecl-gearman" do
+    command "pecl install gearman"
+    notifies :restart, resources(:service => "php5-fpm"), :delayed
+    not_if "php -m | grep gearman"
+end
+
+# gearman ini
+template "#{node['php']['ext_conf_dir']}/gearman.ini" do
+  source "gearman.ini.erb"
+  owner "root"
+  group "root"
+  mode "0644"
+end
+
+# XHProf
+php_pear "xhprof" do
+  action :install
+  notifies :restart, resources(:service => "php5-fpm"), :delayed
 end

@@ -1,16 +1,16 @@
 # supervisord
 package "supervisor"
 
-service "supervisorctl" do
-    service_name "supervisorctl"
-    restart_command "/usr/bin/supervisorctl update && /usr/bin/supervisorctl restart all && sleep 1"
+service "supervisord" do
+    service_name "supervisord"
+    restart_command "kill -TERM $(cat /var/run/supervisord.pid) && /usr/bin/supervisord"
 end
 
 # config
 template "supervisord.conf" do
-  path "/etc/supervisord.conf"
+  path "/etc/supervisor/supervisord.conf"
   source "supervisord.conf.erb"
   owner "root"
   mode 0644
-  notifies :restart, resources(:service => "supervisorctl")
+  notifies :restart, resources(:service => "supervisord")
 end

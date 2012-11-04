@@ -1,8 +1,9 @@
 ; supervisor config file
 
 [unix_http_server]
-file=/var/run//supervisor.sock   ; (the path to the socket file)
-chmod=0700                       ; sockef file mode (default 0700)
+file=/tmp/supervisor.sock   ; (the path to the socket file)
+chmod=0770                       ; sockef file mode (default 0700)
+chown=root:vagrant
 
 [inet_http_server]         ; inet (TCP) server disabled by default
 port=*:9001        ; (ip_address:port specifier, *:port for all iface)
@@ -19,7 +20,7 @@ childlogdir=/var/log/supervisor            ; ('AUTO' child log dir, default $TEM
 supervisor.rpcinterface_factory = supervisor.rpcinterface:make_main_rpcinterface
 
 [supervisorctl]
-serverurl=unix:///var/run//supervisor.sock ; use a unix:// URL  for a unix socket
+serverurl=unix:///tmp/supervisor.sock ; use a unix:// URL  for a unix socket
 
 ; The [include] section can just contain the "files" setting.  This
 ; setting can list multiple files (separated by whitespace or

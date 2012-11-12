@@ -39,6 +39,9 @@ package "php5-sqlite"
 # mysql
 package "php5-mysql"
 
+# php xml-rpc
+package "php5-xmlrpc"
+
 # php fpm
 package "php5-fpm"
 

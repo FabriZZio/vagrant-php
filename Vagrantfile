@@ -59,9 +59,9 @@ Vagrant::Config.run do |config|
     },
     'applications' => [
     {
-      'name' => 'fratello',
+      'name' => 'my-project',
       'docroot' => '/vagrant/docs',
-      'domain' => 'fratello.local',
+      'domain' => 'my-project.local',
       'application_env' => 'local'
     }]
   }

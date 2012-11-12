@@ -14,3 +14,9 @@ template "supervisord.conf" do
   mode 0644
   notifies :restart, resources(:service => "supervisord")
 end
+
+# change permissions on supervisor configuration directory
+execute "change-supervisor-permissions" do
+    command "chown -R vagrant /etc/supervisor/conf.d/"
+    notifies :restart, resources(:service => "supervisord")
+end

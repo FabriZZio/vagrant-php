@@ -4,4 +4,5 @@ apt_repository "dotdeb" do
   distribution "stable"
   components ["all"]
   key "http://www.dotdeb.org/dotdeb.gpg"
+  deb_src true
 end

@@ -102,13 +102,13 @@ How to use
 Composer integration
 --------------------
 
-This project provides integration using Composer (http://www.getcomposer.org).
+This project provides integration using Composer (http://www.getcomposer.org). Using this project requires the following in your `composer.json`:
 
-{
-    require: {
-        "fabrizzio/vagrant-php": "dev-develop"
+    {
+        require: {
+            "fabrizzio/vagrant-php": "dev-develop"
+        }
     }
-}
 
 A Composer install script `bin/install` has been provided so Composer can load this project's dependencies automagically.
 
@@ -122,11 +122,11 @@ Using Webgrind
 
 XDebug and Webgrind have been installed allowing you to easily profile your application. You can access webgrind via the Apache Vhost alias `/webgrind`:
 
-    ![PHPInfo with Xdebug enabled](http://github.com/FabriZZio/vagrant-php/raw/develop/images/phpinfo_xdebug.png)
+![PHPInfo with Xdebug enabled](http://github.com/FabriZZio/vagrant-php/raw/develop/images/phpinfo_xdebug.png)
 
 Mind the ?XDEBUG_PROFILE=1 flag to enable profiling for this request, resulting in the following webgrind profile:
 
-    ![Webgrind PHPInfo](http://github.com/FabriZZio/vagrant-php/raw/develop/images/webgrind.png)
+![Webgrind PHPInfo](http://github.com/FabriZZio/vagrant-php/raw/develop/images/webgrind.png)
 
 Supervisord
 -----------
@@ -135,7 +135,7 @@ Supervisord is a daemon taking care of your background processes. (http://www.su
 You can define your supervisord configuration in `/etc/supervisor/conf.d/`.
 The interface is available on port 9000:
 
-    ![Supervisord interface](http://github.com/FabriZZio/vagrant-php/raw/develop/images/supervisord.png)
+![Supervisord interface](http://github.com/FabriZZio/vagrant-php/raw/develop/images/supervisord.png)
 
 
 Todo

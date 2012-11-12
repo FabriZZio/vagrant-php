@@ -142,4 +142,5 @@ Todo
 ----
 
 - Move apc.php and memcache.php naar vhost alias
--
+- sphinx + graphviz
+- node for requireJs optimizations

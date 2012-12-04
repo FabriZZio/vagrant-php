@@ -9,7 +9,7 @@ What do I get?
 
 The following is a list of pre-installed software packages:
 
-- PHP 5.3.18 (via dotdeb)
+- PHP 5.3.+ (latest via dotdeb)
 - MySQL 5.5.28
 - Apache 2.2.22
 

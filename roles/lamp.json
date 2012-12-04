@@ -26,7 +26,8 @@
             "directives": {
                 "date.timezone": "Europe/Brussels",
                 "post_max_size": "32M",
-                "short_open_tag": "On"
+                "short_open_tag": "On",
+                "html_errors": "On"
             }
         },
         "mysql_charset": {

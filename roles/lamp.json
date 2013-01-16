@@ -9,6 +9,7 @@
         "recipe[main::git]",
         "recipe[main::sendmail]",
         "recipe[main]",
+        "recipe[main::apt]",
         "recipe[main::capistrano]",
         "recipe[main::curl]",
         "recipe[main::gearman]",

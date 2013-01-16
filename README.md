@@ -63,11 +63,11 @@ Using your own role is as easy as defining it in the main `Vagrantfile`:
 
 Box setup
 ---------
-This box requires the default Ubuntu Precise64 base box (http://files.vagrantup.com/precise64.box) but will be downloaded automatically when you don't have it already.
+This box requires the default Ubuntu Precise64 base box (http://files.vagrantup.com/precise64.box) and will be downloaded automatically when you don't have it already.
 
 PHP is set up using PHP-FPM running as user `vagrant` avoiding any possible permission issues.
 
-MySQL is setup to use UTF-8 encoding.
+MySQL is set up to use UTF-8 encoding.
 
 Port forwarding has been setup as following:
 
@@ -77,16 +77,25 @@ Port forwarding has been setup as following:
 SSH agent forwarding has been activated so you can use git within your vagrant box.
 Make sure you allow ssh agent forwarding on your physical machine. See (https://help.github.com/articles/using-ssh-agent-forwarding)
 
+VirtualBox Guest Additions
+--------------------------
+
+> todo: provide base box precise64 voor versie VB 4.2.6.
+
 How to use
 ----------
 
-1) add the packaged box generated from this source code to vagrant
+1) Integrating Vagrant-PHP can easily be done trough Composer (http://www.getcomposer.org):
 
-    vagrant box add vagrant-php-1.0 http://dl.dropbox.coXXXXXXm/u/68032224/vagrant-php-1.0.box
+    {
+        require: {
+            "fabrizzio/vagrant-php": "dev-develop"
+        }
+    }
 
-2) in your project folder (which you checked out via GIT), initialize vagrant
+A Composer install script `bin/install` has been provided so Composer can load this project's dependencies automagically.
 
-    vagrant init
+2) You might consider copying the "Vagrantfile" in this repository into your project's root folder. (or you might create a new one through `vagrant init`)
 
 3) startup your vagrant virtual machine
 
@@ -97,20 +106,6 @@ How to use
 5) login to your freshly installed pimped out chromed out dev box:
 
     vagrant ssh
-
-
-Composer integration
---------------------
-
-This project provides integration using Composer (http://www.getcomposer.org). Using this project requires the following in your `composer.json`:
-
-    {
-        require: {
-            "fabrizzio/vagrant-php": "dev-develop"
-        }
-    }
-
-A Composer install script `bin/install` has been provided so Composer can load this project's dependencies automagically.
 
 MySQL
 -----

@@ -1,5 +1,15 @@
 include_recipe "php"
 
+# dotdeb repository
+apt_repository "ondrej" do
+  uri "http://ppa.launchpad.net/ondrej/php5/ubuntu"
+  distribution "precise"
+  components ["main"]
+  deb_src true
+  keyserver "keyserver.ubuntu.com"
+  key "E5267A6C"
+end
+
 # overrules PHP settings (necessary for php.ini via apache)
 template "#{node['php']['ext_conf_dir']}/custom.ini" do
   source "custom.ini.erb"
@@ -16,7 +26,7 @@ php_pear "xdebug" do
 end
 
 # apc
-package "php5-apc"
+# package "php5-apc"
 template "#{node['php']['ext_conf_dir']}/apc.ini" do
   source "apc.ini.erb"
   owner "root"
@@ -43,7 +53,7 @@ package "php5-mysql"
 package "php5-xmlrpc"
 
 # php fpm
-package "php5-fpm"
+# package "php5-fpm"
 
 # define php5-fpm service
 service "php5-fpm" do
@@ -99,7 +109,7 @@ template "#{node['php']['ext_conf_dir']}/gearman.ini" do
 end
 
 # XHProf
-php_pear "xhprof" do
-  action :install
-  notifies :restart, resources(:service => "php5-fpm"), :delayed
-end
+#php_pear "xhprof" do
+#  action :install
+#  notifies :restart, resources(:service => "php5-fpm"), :delayed
+#end

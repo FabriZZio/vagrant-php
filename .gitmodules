@@ -22,3 +22,6 @@
 [submodule "cookbooks/nginx"]
 	path = cookbooks/nginx
 	url = git://github.com/opscode-cookbooks/nginx.git
+[submodule "cookbooks/ohai"]
+	path = cookbooks/ohai
+	url = git://github.com/opscode-cookbooks/ohai.git

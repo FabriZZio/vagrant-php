@@ -19,3 +19,7 @@
 [submodule "cookbooks/apache2"]
 	path = cookbooks/apache2
 	url = git://github.com/opscode-cookbooks/apache2.git
+[submodule "cookbooks/nginx"]
+    path = cookbooks/nginx
+    url = git://github.com/opscode-cookbooks/nginx.git
+

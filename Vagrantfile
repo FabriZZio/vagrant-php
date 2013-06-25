@@ -17,7 +17,7 @@ Vagrant::Config.run do |config|
   config.ssh.forward_agent = true
 
   # set available memory to 1GB
-  config.vm.customize ["modifyvm", :id, "--memory", 1024]
+  # config.vm.customize ["modifyvm", :id, "--memory", 1024]
 
   # Boot with a GUI so you can see the screen. (Default is headless)
   # config.vm.boot_mode = :gui

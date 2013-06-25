@@ -16,7 +16,7 @@ php_pear "xdebug" do
 end
 
 # apc
-package "php5-apc"
+package "php-apc"
 template "#{node['php']['ext_conf_dir']}/apc.ini" do
   source "apc.ini.erb"
   owner "root"

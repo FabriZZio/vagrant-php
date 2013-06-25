@@ -16,9 +16,6 @@ Vagrant::Config.run do |config|
   # enable ssh forwarding agent
   config.ssh.forward_agent = true
 
-  # set available memory to 1GB
-  # config.vm.customize ["modifyvm", :id, "--memory", 1024]
-
   # Boot with a GUI so you can see the screen. (Default is headless)
   # config.vm.boot_mode = :gui
 
@@ -66,4 +63,11 @@ Vagrant::Config.run do |config|
     }]
   }
   end
+end
+
+Vagrant.configure("2") do |config|
+    config.vm.provider :virtualbox do |vb|
+        vb.customize ["modifyvm", :id, "--memory", 1024]
+        vb.customize ["modifyvm", :id, "--cpus", 2]
+    end
 end

@@ -17,6 +17,7 @@
         "recipe[main::sqlite3]",
         "recipe[main::mysql]",
         "recipe[main::php]",
+        "recipe[main::oci8]",
         "recipe[main::apache]",
         "recipe[main::phpmyadmin]",
         "recipe[main::webgrind]",

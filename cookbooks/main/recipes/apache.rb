@@ -29,13 +29,6 @@ execute "disable-default-site" do
   notifies :reload, resources(:service => "apache2"), :delayed
 end
 
-# default vhost
-web_app "default" do
-  server_name node['hostname']
-  server_aliases []
-  docroot "/vagrant/docs"
-end
-
 # load vhost entries from Vagrantfile
 node['applications'].each do |a|
   web_app "#{a['name']}" do

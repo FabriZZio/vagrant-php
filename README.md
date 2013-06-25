@@ -136,6 +136,9 @@ The interface is available on port 9000:
 Todo
 ----
 
+- dotfiles (git name and e-mail?)
+- copy oracle resources (via wget op dropbox?)
+- php-fpm meerdere processen? (dynamic)
 - Move apc.php and memcache.php naar vhost alias
 - sphinx + graphviz
 - node for requireJs optimizations
